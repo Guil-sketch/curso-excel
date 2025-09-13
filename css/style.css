@@ -252,3 +252,34 @@ body{
   .secao{margin:16px 12px; padding:20px}
   .hero-banner{display:none}
 }
+
+/* === Ajuste Botão WhatsApp === */
+
+/* Navbar (ícone no topo) */
+.btn-icon.whats-nav {
+  width: 36px;     /* menor para alinhar ao botão de tema */
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--wa);
+  box-shadow: 0 4px 10px var(--wa-ring);
+}
+.btn-icon.whats-nav svg {
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+}
+
+/* Flutuante (canto inferior direito) */
+.whats {
+  width: 56px;     /* mantém padrão de FAB */
+  height: 56px;
+  border-radius: 50%;
+  background: var(--wa);
+  box-shadow: 0 6px 18px var(--wa-ring);
+}
+.whats svg {
+  width: 32px;     /* ícone maior, mais proporcional */
+  height: 32px;
+  fill: #fff;
+}

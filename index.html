@@ -16,6 +16,7 @@
   <meta property="og:url" content="https://guil-sketch.github.io/curso-excel/">
   <meta property="og:image" content="img/banner-excel.png">
 
+  <!-- Favicon: ícone da aba -->
   <link rel="icon" type="image/png" href="img/logo.png"/>
   <meta name="color-scheme" content="light dark">
 
@@ -24,6 +25,7 @@
     (function(){
       const saved = localStorage.getItem('theme');
       if (saved) document.documentElement.setAttribute('data-theme', saved);
+      else document.documentElement.setAttribute('data-theme', 'light');
     })();
   </script>
 
@@ -38,7 +40,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="css/style.css?v=6"/>
+  <link rel="stylesheet" href="css/style.css?v=7"/>
 </head>
 <body>
 
@@ -47,8 +49,9 @@
 
   <!-- Navbar -->
   <header class="navbar">
+    <!-- LOGO TRANSPARENTE NO CANTO ESQUERDO -->
     <a class="brand" href="#home" aria-label="Início">
-      <img src="img/banner-excel.png" alt="Logo" loading="lazy"/>
+      <img src="img/logo_transparente.png" alt="Logo Guilherme Pereira" loading="lazy"/>
     </a>
 
     <button class="hamb" aria-label="Abrir menu" aria-expanded="false">&#9776;</button>
@@ -92,7 +95,7 @@
     <p>Escolha um módulo para ver o conteúdo e baixar o PDF:</p>
 
     <div class="tabs" role="tablist" aria-label="Módulos do curso" data-group="curso">
-      <button class="pill" role="tab" aria-selected="true" data-target="mod1"><span class="ico">📘</span> Módulo 1</button>
+      <button class="pill" role="tab" aria-selected="true"  data-target="mod1"><span class="ico">📘</span> Módulo 1</button>
       <button class="pill" role="tab" aria-selected="false" data-target="mod2"><span class="ico">⌨️</span> Módulo 2</button>
       <button class="pill" role="tab" aria-selected="false" data-target="mod3"><span class="ico">🧮</span> Módulo 3</button>
       <button class="pill" role="tab" aria-selected="false" data-target="mod4"><span class="ico">📊</span> Módulo 4</button>
@@ -146,19 +149,21 @@
     <p>Veja os tópicos por trilha:</p>
 
     <div class="tabs" role="tablist" aria-label="Trilhas do conteúdo" data-group="conteudo">
-      <button class="pill" role="tab" aria-selected="true" data-target="basico"><span class="ico">🌱</span> Básico</button>
+      <button class="pill" role="tab" aria-selected="true"  data-target="basico"><span class="ico">🌱</span> Básico</button>
       <button class="pill" role="tab" aria-selected="false" data-target="intermediario"><span class="ico">🚀</span> Intermediário</button>
       <button class="pill" role="tab" aria-selected="false" data-target="funcoes"><span class="ico">🧠</span> Funções</button>
       <button class="pill" role="tab" aria-selected="false" data-target="graficos"><span class="ico">📈</span> Gráficos</button>
       <span class="tabs-indicator"></span>
     </div>
 
+    <!-- Cada aba também com o PDF correspondente -->
     <div id="basico" class="tabpanel" role="tabpanel">
       <ul class="grid">
         <li>Interface, atalhos iniciais</li>
         <li>Salvar/abrir, boas práticas</li>
         <li>Primeiras fórmulas</li>
       </ul>
+      <a href="arquivos/excel/modulo1.pdf" class="btn" download>Baixar Apostila (PDF)</a>
     </div>
 
     <div id="intermediario" class="tabpanel" role="tabpanel" hidden>
@@ -167,6 +172,7 @@
         <li>Tabelas e validação</li>
         <li>Classificar e filtrar</li>
       </ul>
+      <a href="arquivos/excel/modulo2.pdf" class="btn" download>Baixar Apostila (PDF)</a>
     </div>
 
     <div id="funcoes" class="tabpanel" role="tabpanel" hidden>
@@ -175,6 +181,7 @@
         <li>PROCV / XLOOKUP</li>
         <li>SOMASE / CONT.SE / TEXTO / DATA</li>
       </ul>
+      <a href="arquivos/excel/modulo3.pdf" class="btn" download>Baixar Apostila (PDF)</a>
     </div>
 
     <div id="graficos" class="tabpanel" role="tabpanel" hidden>
@@ -183,6 +190,7 @@
         <li>Segmentações</li>
         <li>Dashboard aplicado</li>
       </ul>
+      <a href="arquivos/excel/modulo4.pdf" class="btn" download>Baixar Apostila (PDF)</a>
     </div>
   </section>
 
@@ -209,7 +217,8 @@
         </div>
         <div class="ex-actions">
           <a class="btn" href="arquivos/exercicios/ex02-funcoes.xlsx" download onclick="showToast('Baixando Exercício 02…')">Baixar .xlsx</a>
-          <a class="icon-btn" href="arquivos/exercicios/base-ex02.csv" download onclick="showToast('Baixando base .csv…')">🗂️ CSV</a>
+          <!-- CSV agora como outline para ficar legível no tema claro -->
+          <a class="btn-outline" href="arquivos/exercicios/base-ex02.csv" download onclick="showToast('Baixando base .csv…')">🗂️ CSV</a>
         </div>
       </article>
 
@@ -246,15 +255,16 @@
   <!-- Voltar ao topo -->
   <a href="#home" class="to-top" id="toTop" aria-label="Voltar ao topo">↑</a>
 
-<!-- Botão flutuante WhatsApp (SVG oficial) -->
-<a class="whats" href="https://wa.me/5561982190082" target="_blank" aria-label="Fale no WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28" fill="currentColor" aria-hidden="true">
-    <path d="M380.9 97.1C339-23.6 211.7-31.3 132.3 48.1c-62 62-69.3 156.1-24.4 226.6L80 432l161.7-28.6c66.8 24.6 141.5 7.9 193.7-44.3 79.4-79.4 71.7-206.7-24.5-262zM256 372c-31.5 0-62.1-8.9-88.6-25.6l-6.3-4-52.4 9.3 9.6-51.3-4.1-6.5C99.6 269.2 92 242 92 214.1c0-88.2 71.8-160 160-160 42.7 0 82.8 16.6 112.9 46.7s46.7 70.2 46.7 112.9c0 88.2-71.8 160-160 160z"/>
-  </svg>
-</a>
+  <!-- Botão flutuante WhatsApp (SVG oficial) -->
+  <a class="whats" href="https://wa.me/5561982190082" target="_blank" aria-label="Fale no WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28" aria-hidden="true">
+      <path fill="currentColor" d="M380.9 97.1C339-23.6 211.7-31.3 132.3 48.1c-62 62-69.3 156.1-24.4 226.6L80 432l161.7-28.6c66.8 24.6 141.5 7.9 193.7-44.3 79.4-79.4 71.7-206.7-24.5-262zM256 372c-31.5 0-62.1-8.9-88.6-25.6l-6.3-4-52.4 9.3 9.6-51.3-4.1-6.5C99.6 269.2 92 242 92 214.1c0-88.2 71.8-160 160-160 42.7 0 82.8 16.6 112.9 46.7s46.7 70.2 46.7 112.9c0 88.2-71.8 160-160 160z"/>
+    </svg>
+  </a>
 
+  <!-- JS -->
   <script>
-    // ===== Menu mobile =====
+    // Menu mobile
     const hamb = document.querySelector('.hamb');
     const menu = document.querySelector('.menu');
     if (hamb) {
@@ -265,7 +275,7 @@
       });
     }
 
-    // ===== Tabs escopo por seção =====
+    // Tabs com escopo por seção + memória
     function moveIndicatorWithinTabs(tabsEl, btn){
       const ind = tabsEl.querySelector('.tabs-indicator');
       if (!ind) return;
@@ -277,7 +287,7 @@
     function initTabs(tabsEl){
       const section = tabsEl.closest('section');
       const buttons = [...tabsEl.querySelectorAll('button.pill[role="tab"]')];
-      const panels = [...section.querySelectorAll('.tabpanel')];
+      const panels  = [...section.querySelectorAll('.tabpanel')];
       tabsEl.addEventListener('click', (e)=>{
         const btn = e.target.closest('button.pill[role="tab"]');
         if (!btn) return;
@@ -299,7 +309,7 @@
     }
     document.querySelectorAll('.tabs').forEach(initTabs);
 
-    // ===== Tema (light/dark) =====
+    // Tema (light/dark)
     const toggle = document.getElementById('themeToggle');
     if (toggle){
       const applyIcon = () => {
@@ -316,7 +326,7 @@
       });
     }
 
-    // ===== Toasts =====
+    // Toasts
     const toast = document.getElementById('toast');
     function showToast(msg='Baixando arquivo…'){
       if (!toast) return;
@@ -325,7 +335,7 @@
       setTimeout(()=> toast.classList.remove('show'), 1600);
     }
 
-    // ===== Barra de progresso + Voltar ao topo =====
+    // Progresso do scroll + Voltar ao topo
     const bar = document.getElementById('progress');
     const toTop = document.getElementById('toTop');
     window.addEventListener('scroll', ()=>{

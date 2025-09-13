@@ -8,6 +8,10 @@
   --muted:#6b7280;
   --ring:rgba(33,163,102,.25);
   --border:#dbe2ea;
+
+  /* WhatsApp */
+  --wa:#25D366;
+  --wa-ring: rgba(37,211,102,.35);
 }
 :root[data-theme="dark"]{
   --ink:#e5e7eb;
@@ -50,17 +54,20 @@ body{
 }
 :root[data-theme="dark"] .icon-btn{ background:#ffffff10; border-color:#ffffff25; }
 
-/* WhatsApp NO TOPO – redondo, com SVG */
+/* WhatsApp NO TOPO – redondo, com SVG (FIX visual nos dois temas) */
 .btn-icon{
   display:inline-flex; align-items:center; justify-content:center;
   width:40px; height:40px; border-radius:50%;
-  text-decoration:none; border:1px solid #ffffff30;
+  text-decoration:none;
+  border:2px solid color-mix(in oklab, var(--wa), black 15%);
+  box-shadow: 0 8px 18px var(--wa-ring);
+  transition: transform .06s ease, filter .2s ease;
 }
 .whats-nav{
-  background:#25D366; color:#fff;
-  box-shadow: 0 8px 18px rgba(37,211,102,.35);
+  background: var(--wa); color:#fff;
 }
 .whats-nav svg{ width:22px; height:22px; fill:#fff }
+.whats-nav:hover{ transform: translateY(-1px); }
 
 /* Seções */
 .secao{
@@ -89,9 +96,7 @@ body{
 }
 :root[data-theme="dark"] .tabs{ background:#0f2a20; }
 
-/* ⚑ FIX contraste abas – dark
-   Antes: .pill era fundo branco + texto claro (inlegível).
-   Agora: inativa fica escura com texto claro; ativa continua verde. */
+/* Contraste abas – dark (corrigido) */
 .pill{
   position:relative;
   background:#fff; color: var(--ink);
@@ -102,21 +107,19 @@ body{
   transition:.2s ease;
 }
 :root[data-theme="dark"] .pill{
-  background:#142a22;          /* fundo escuro */
+  background:#142a22;          /* inativa escura */
   color:#e5e7eb;               /* texto claro */
-  border-color:#2ac07a;        /* leve ganho no contraste da borda */
+  border-color:#2ac07a;
 }
 .pill[aria-selected="true"]{
   background: var(--excel); color:#fff; border-color: var(--excel);
   box-shadow: 0 6px 16px var(--ring);
 }
 :root[data-theme="dark"] .pill[aria-selected="true"]{
-  background:#21a366;          /* mantém identidade Excel */
-  color:#ffffff;
-  border-color:#21a366;
+  background:#21a366; color:#ffffff; border-color:#21a366;
 }
 .pill:hover{transform: translateY(-1px)}
-:root[data-theme="dark"] .pill:hover{ background:#193428; } /* hover um passo acima */
+:root[data-theme="dark"] .pill:hover{ background:#193428; }
 
 .pill .ico{margin-right:6px}
 .tabs-indicator{
@@ -145,8 +148,19 @@ body{
   background: var(--excel); color:#fff; text-decoration:none;
   border-radius:10px; font-weight:800; border:none; cursor:pointer;
   box-shadow: 0 8px 20px var(--ring); transition:.2s ease;
+  position: relative;
 }
 .btn:hover{background: var(--excel-dark); transform: translateY(-1px)}
+
+/* Estado de loading do botão */
+.btn .btn-spinner{
+  display:none; width:16px; height:16px; border-radius:50%;
+  border:2px solid #ffffff80; border-top-color:#fff;
+  margin-left:10px; animation: spin 0.9s linear infinite;
+}
+.btn.is-loading .btn-spinner{ display:inline-block; }
+.btn.is-loading{ filter:saturate(0.85) brightness(0.95); }
+@keyframes spin{ to{ transform: rotate(360deg); } }
 
 /* Botão outline (CSV) */
 .btn-outline{
@@ -189,6 +203,7 @@ body{
   background: var(--excel); color:#fff; padding:10px 14px; border-radius:10px;
   box-shadow:0 10px 24px var(--ring); opacity:0; pointer-events:none;
   transition: opacity .25s ease, transform .25s ease; z-index:60;
+  text-align:center;
 }
 .toast.show{ opacity:1; transform: translateX(-50%) translateY(-6px); }
 
@@ -207,17 +222,20 @@ body{
 }
 .to-top.show{ opacity:1; pointer-events:auto; }
 
-/* Botão flutuante WhatsApp (com SVG) */
+/* Botão flutuante WhatsApp (com SVG) — FIX visual */
 .whats{
   position: fixed; right: 18px; bottom: 18px;
   width: 58px; height:58px;
   display:flex; align-items:center; justify-content:center;
   text-decoration:none; border-radius:50%;
-  background: #25D366; color:#fff;
-  box-shadow: 0 12px 28px rgba(37,211,102,.35);
-  z-index:66; /* acima do toTop */
+  background: var(--wa); color:#fff;
+  border:2px solid color-mix(in oklab, var(--wa), black 15%);
+  box-shadow: 0 12px 28px var(--wa-ring);
+  z-index:66;
+  transition: transform .06s ease;
 }
 .whats svg{ width:28px; height:28px; fill:#fff }
+.whats:hover{ transform: translateY(-2px); }
 
 /* Foco acessível */
 :focus-visible{ outline:3px solid var(--excel); outline-offset:3px }

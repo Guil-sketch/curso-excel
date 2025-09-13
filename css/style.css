@@ -1,220 +1,278 @@
-/* === Design tokens === */
-:root{
-  --excel:#21a366;
-  --excel-dark:#1b8a59;
-  --ink:#1f2937;
-  --bg-grad:linear-gradient(180deg,#e8f4ff 0%, #ffffff 60%);
-  --card:#ffffff;
-  --muted:#6b7280;
-  --ring:rgba(33,163,102,.25);
-  --border:#dbe2ea;
-}
-:root[data-theme="dark"]{
-  --ink:#e5e7eb;
-  --bg-grad:linear-gradient(180deg,#0b1620 0%, #0f1b24 60%);
-  --card:#0e1a20;
-  --muted:#9aa4af;
-  --border:#1f2f3a;
+/* ========= Reset/Primitivos ========= */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img { display: block; max-width: 100%; height: auto; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
 }
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-html{ scroll-padding-top: 80px; } /* evita navbar sobrepor âncoras */
-body{
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: var(--bg-grad);
-  color: var(--ink);
+/* ========= Tokens ========= */
+:root {
+  /* Base (light) */
+  --bg: #ffffff;
+  --surface: #f6f7f9;
+  --surface-2: #eef1f5;
+  --text: #0b1220;
+  --muted: #475569;
+  --border: #d7dce3;
+  --primary: #2563eb;           /* azul vivo */
+  --primary-contrast: #ffffff;
+  --accent: #10b981;            /* verde */
+  --focus: #22d3ee;             /* ciano para foco */
+
+  /* Tabs (light) */
+  --tab-bg: #e7ecf3;
+  --tab-text: #0b1220;
+  --tab-hover-bg: #dfe6f0;
+  --tab-active-bg: var(--primary);
+  --tab-active-text: var(--primary-contrast);
+  --tab-border: #c8d1dd;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.06), 0 1px 1px rgba(0,0,0,.04);
+  --shadow-md: 0 6px 16px rgba(0,0,0,.08);
+
+  color-scheme: light;
 }
 
-/* Navbar */
-.navbar{
-  position: sticky; top:0; z-index: 30;
-  display:flex; align-items:center; gap:12px;
-  background: var(--excel);
-  padding: 10px 16px;
-  box-shadow: 0 6px 16px rgba(0,0,0,.1);
-}
-.navbar .brand img{height:36px;width:auto;}
+/* Sistema/dark via prefers + override por data-theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1020;
+    --surface: #12172a;
+    --surface-2: #161c32;
+    --text: #e8eefc;
+    --muted: #a5b4cf;
+    --border: #24304d;
+    --primary: #60a5fa;                 /* azul claro melhora contraste sobre superfícies escuras */
+    --primary-contrast: #0b1020;
+    --accent: #34d399;
+    --focus: #7dd3fc;
 
-/* Menu */
-.menu{display:flex; gap:22px; margin-left:auto}
-.menu a{color:#fff; text-decoration:none; font-weight:700}
-.menu a:hover{opacity:.9}
-.hamb{display:none; margin-left:auto; font-size:26px; color:#fff; background:none; border:none; cursor:pointer}
-.nav-actions{ display:flex; gap:10px; margin-left:12px; }
+    /* Tabs (dark) — contraste reforçado */
+    --tab-bg: #1b233b;                  /* ~#1b233b */
+    --tab-text: #e8eefc;                /* texto claro */
+    --tab-hover-bg: #223058;            /* hover mais claro que ativo, mas distinto */
+    --tab-active-bg: #2563eb;           /* fundo ativo azul saturado para contraste AA com branco */
+    --tab-active-text: #ffffff;         /* texto branco em ativo */
+    --tab-border: #2b3a65;
 
-/* Botões “pílula” da direita */
-.icon-btn{
-  background: #ffffff20; color:#fff; border:1px solid #ffffff40;
-  border-radius:10px; padding:8px 10px; cursor:pointer; text-decoration:none;
-}
-:root[data-theme="dark"] .icon-btn{ background:#ffffff10; border-color:#ffffff25; }
-
-/* WhatsApp NO TOPO – redondo, com SVG */
-.btn-icon{
-  display:inline-flex; align-items:center; justify-content:center;
-  width:40px; height:40px; border-radius:50%;
-  text-decoration:none; border:1px solid #ffffff30;
-}
-.whats-nav{
-  background:#25D366; color:#fff;
-  box-shadow: 0 8px 18px rgba(37,211,102,.35);
-}
-.whats-nav svg{ width:22px; height:22px; fill:#fff }
-
-/* Seções */
-.secao{
-  max-width: 1100px; margin: 24px auto; padding: 28px;
-  background: var(--card); color: var(--ink);
-  border-radius:16px; border:1px solid var(--border);
-  box-shadow: 0 12px 30px rgba(0,0,0,.08);
-}
-.secao h2{color: var(--excel); margin: 0 0 8px}
-
-/* Hero */
-.hero{background: transparent; box-shadow:none; border:none}
-.hero-inner{display:grid; grid-template-columns: 1.1fr 1fr; gap:24px; align-items:center}
-.hero-texto h1{font-size: 40px; margin:0 0 6px}
-.hero-texto p{color: var(--muted); margin:0 0 16px}
-.hero-banner{width:100%; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.15)}
-
-/* Tabs / Pills */
-.tabs{
-  position:relative;
-  display:flex; flex-wrap:wrap; gap:10px;
-  padding: 6px; border-radius: 12px;
-  background: #f0f7f3;
-  border: 1px solid var(--excel);
-  margin: 14px 0 12px;
-}
-:root[data-theme="dark"] .tabs{ background:#0f2a20; }
-.pill{
-  position:relative;
-  background:#fff; color: var(--ink);
-  border:1px solid var(--excel);
-  border-radius: 999px;
-  padding: 10px 14px;
-  font-weight:700; cursor:pointer;
-  transition:.2s ease;
-}
-.pill[aria-selected="true"]{
-  background: var(--excel); color:#fff; border-color: var(--excel);
-  box-shadow: 0 6px 16px var(--ring);
-}
-.pill:hover{transform: translateY(-1px)}
-.pill .ico{margin-right:6px}
-.tabs-indicator{
-  position:absolute; height:3px; left:0; bottom:-1px; width:0;
-  background: var(--excel);
-  border-radius: 3px;
-  transition: transform .25s ease, width .25s ease;
+    color-scheme: dark;
+  }
 }
 
-/* Painéis das abas */
-.tabpanel{
-  border:1px solid var(--excel);
-  border-radius: 14px;
-  padding: 16px;
-  background:#fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,.05);
+/* Forçar tema via atributo (light/dark/system) */
+html[data-user-theme="light"] {
+  --bg: #ffffff;
+  --surface: #f6f7f9;
+  --surface-2: #eef1f5;
+  --text: #0b1220;
+  --muted: #475569;
+  --border: #d7dce3;
+  --primary: #2563eb;
+  --primary-contrast: #ffffff;
+  --accent: #10b981;
+  --focus: #22d3ee;
+
+  --tab-bg: #e7ecf3;
+  --tab-text: #0b1220;
+  --tab-hover-bg: #dfe6f0;
+  --tab-active-bg: #2563eb;
+  --tab-active-text: #ffffff;
+  --tab-border: #c8d1dd;
+
+  color-scheme: light;
 }
-:root[data-theme="dark"] .tabpanel{ background: var(--card); }
+html[data-user-theme="dark"] {
+  --bg: #0b1020;
+  --surface: #12172a;
+  --surface-2: #161c32;
+  --text: #e8eefc;
+  --muted: #a5b4cf;
+  --border: #24304d;
+  --primary: #60a5fa;
+  --primary-contrast: #0b1020;
+  --accent: #34d399;
+  --focus: #7dd3fc;
 
-/* Listas */
-.grid{display:grid; gap:8px; padding-left:18px}
+  --tab-bg: #1b233b;
+  --tab-text: #e8eefc;
+  --tab-hover-bg: #223058;
+  --tab-active-bg: #2563eb;
+  --tab-active-text: #ffffff;
+  --tab-border: #2b3a65;
 
-/* Botões */
-.btn{
-  display:inline-block; padding:12px 16px;
-  background: var(--excel); color:#fff; text-decoration:none;
-  border-radius:10px; font-weight:800; border:none; cursor:pointer;
-  box-shadow: 0 8px 20px var(--ring); transition:.2s ease;
-}
-.btn:hover{background: var(--excel-dark); transform: translateY(-1px)}
-
-/* Botão outline (CSV) */
-.btn-outline{
-  display:inline-block; padding:12px 16px;
-  background: transparent; color: var(--excel);
-  border:2px solid var(--excel); border-radius:10px; font-weight:800; text-decoration:none;
-  transition:.2s ease;
-}
-.btn-outline:hover{ background: rgba(33,163,102,.08) }
-:root[data-theme="dark"] .btn-outline{ color:#8ef0bd; border-color:#46d08d }
-:root[data-theme="dark"] .btn-outline:hover{ background: rgba(70,208,141,.12) }
-
-/* Exercícios */
-.ex-list{ display:grid; gap:12px }
-.ex-item{
-  display:flex; gap:12px; align-items:center; justify-content:space-between;
-  background: var(--card); border:1px solid var(--border);
-  border-radius:12px; padding:12px 14px;
-}
-.ex-info h3{ margin:4px 0; color: var(--excel) }
-.ex-info p{ margin:0; color: var(--muted) }
-.ex-actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap }
-
-/* Formulário */
-.form{display:grid; gap:12px}
-.form input,.form textarea{
-  width:100%; padding:12px; border-radius:10px;
-  border:1px solid var(--border); font-size:16px
-}
-.form textarea{min-height:120px}
-:root[data-theme="light"] .form input,
-:root[data-theme="light"] .form textarea{ background:#fff; color:#000; }
-
-/* Footer */
-.footer{ text-align:center; color:#6b7280; padding:24px }
-
-/* Toast */
-.toast{
-  position: fixed; left:50%; bottom:24px; transform: translateX(-50%);
-  background: var(--excel); color:#fff; padding:10px 14px; border-radius:10px;
-  box-shadow:0 10px 24px var(--ring); opacity:0; pointer-events:none;
-  transition: opacity .25s ease, transform .25s ease; z-index:60;
-}
-.toast.show{ opacity:1; transform: translateX(-50%) translateY(-6px); }
-
-/* Barra de progresso */
-.progress{
-  position: fixed; top:0; left:0; height:4px; width:0%;
-  background: var(--excel); z-index:70;
+  color-scheme: dark;
 }
 
-/* Voltar ao topo */
-.to-top{
-  position: fixed; right:18px; bottom:88px; width:44px; height:44px;
-  border-radius:50%; background:#9ca3af; color:#fff; display:grid; place-items:center;
-  text-decoration:none; font-size:20px; opacity:0; pointer-events:none; transition:.2s;
-  z-index:65;
+/* ========= Layout ========= */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 500 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
 }
-.to-top.show{ opacity:1; pointer-events:auto; }
-
-/* Botão flutuante WhatsApp (com SVG) */
-.whats{
-  position: fixed; right: 18px; bottom: 18px;
-  width: 58px; height:58px;
-  display:flex; align-items:center; justify-content:center;
-  text-decoration:none; border-radius:50%;
-  background: #25D366; color:#fff;
-  box-shadow: 0 12px 28px rgba(37,211,102,.35);
-  z-index:66; /* acima do toTop */
+.container {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: 0 16px;
 }
-.whats svg{ width:28px; height:28px; fill:#fff }
 
-/* Foco acessível */
-:focus-visible{ outline:3px solid var(--excel); outline-offset:3px }
-
-/* Responsivo */
-@media (max-width: 960px){
-  .hero-inner{grid-template-columns: 1fr}
+/* ========= Navbar ========= */
+.navbar {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in oklab, var(--surface), transparent 0%);
+  backdrop-filter: saturate(120%) blur(6px);
+  border-bottom: 1px solid var(--border);
 }
-@media (max-width: 720px){
-  .hamb{display:block}
-  .menu{display:none; flex-direction:column; position:absolute; top:56px; right:16px;
-        background: var(--excel); padding:12px; border-radius:10px}
-  .menu.open{display:flex}
-  .secao{margin:16px 12px; padding:20px}
-  .hero-banner{display:none}
+.navbar__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; min-height: 64px;
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: inherit; text-decoration: none;
+}
+.brand__text { font-weight: 700; letter-spacing: .2px; }
+.nav-actions { display: flex; gap: 10px; align-items: center; }
+.hide-sm { display: none; }
+@media (min-width: 640px) { .hide-sm { display: inline; } }
+
+/* ========= Botões ========= */
+.btn {
+  appearance: none; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text);
+  padding: 8px 12px; border-radius: 10px;
+  cursor: pointer; transition: transform .04s ease, background .2s ease, border-color .2s ease, color .2s ease;
+  box-shadow: var(--shadow-sm);
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-primary {
+  background: var(--primary); color: var(--primary-contrast);
+  border-color: color-mix(in oklab, var(--primary), black 8%);
+}
+.btn-outline {
+  background: transparent; color: var(--text);
+  border-color: var(--primary);
+}
+.btn-ghost {
+  background: transparent; border-color: transparent;
+  color: var(--text);
+}
+
+/* ========= Conteúdo ========= */
+.content { padding: 24px 0 64px; }
+.hero { padding: 24px 0 8px; }
+.hero h1 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 6px; }
+.hero p { color: var(--muted); margin: 0; }
+
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; padding: 16px; margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========= Abas ========= */
+.tabs { width: 100%; }
+.tablist {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  border-bottom: 1px solid var(--tab-border);
+  padding-bottom: 8px; margin-bottom: 12px;
+}
+.tab {
+  appearance: none;
+  border: 1px solid var(--tab-border);
+  background: var(--tab-bg);
+  color: var(--tab-text);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background .2s ease, color .2s ease, border-color .2s ease, transform .04s ease;
+  box-shadow: var(--shadow-sm);
+}
+.tab:hover { background: var(--tab-hover-bg); }
+.tab.is-active {
+  background: var(--tab-active-bg);
+  color: var(--tab-active-text);
+  border-color: color-mix(in oklab, var(--tab-active-bg), black 12%);
+}
+.tab:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* Painéis */
+.tabpanel { padding: 4px; }
+.tabpanel[hidden] { display: none !important; }
+.tabpanel.is-active {
+  animation: fadeIn .18s ease-out both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ========= FAB WhatsApp ========= */
+.wa-fab {
+  position: fixed; right: 18px; bottom: 18px; z-index: 60;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; color: #fff; text-decoration: none;
+  box-shadow: var(--shadow-md);
+  border: 2px solid color-mix(in oklab, #25D366, black 15%);
+}
+.wa-icon { width: 26px; height: 26px; fill: currentColor; }
+
+/* ========= Botão Voltar ao Topo ========= */
+.to-top {
+  position: fixed; right: 18px; bottom: 86px; z-index: 60;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--surface-2); color: var(--text);
+  border: 1px solid var(--border); box-shadow: var(--shadow-md);
+  opacity: 0; pointer-events: none; transform: translateY(6px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+.to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+/* ========= Toasts ========= */
+.toast-container {
+  position: fixed; inset-inline: 0; top: 12px; z-index: 70;
+  display: grid; place-items: center; pointer-events: none;
+}
+.toast {
+  pointer-events: all;
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 10px 14px; border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  opacity: 0; transform: translateY(-4px);
+  transition: opacity .2s ease, transform .2s ease;
+  max-width: min(92vw, 640px);
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* ========= Scroll Progress ========= */
+.scroll-progress {
+  position: fixed; inset-inline: 0; top: 0; height: 4px; z-index: 80;
+  background: transparent;
+}
+.scroll-progress__bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--primary), color-mix(in oklab, var(--primary), #22d3ee 28%));
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary), black 12%) inset;
+}
+
+/* ========= Acessórios ========= */
+code { background: color-mix(in oklab, var(--surface-2), var(--bg) 40%); padding: 2px 6px; border-radius: 6px; border: 1px solid var(--border); }
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ========= Responsividade ========= */
+@media (min-width: 768px) {
+  .hero { padding: 32px 0 12px; }
+  .card { padding: 20px; }
 }

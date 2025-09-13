@@ -188,3 +188,17 @@ body{
   .ex-item{ flex-direction:column; align-items:stretch }
   .ex-actions{ justify-content:flex-start }
 }
+
+/* === Ajustes extras === */
+
+/* Corrige inputs no tema claro */
+:root[data-theme="light"] .form input,
+:root[data-theme="light"] .form textarea {
+  background: #fff;
+  color: #000;
+}
+
+/* Navbar fixa não cobrir conteúdo */
+html {
+  scroll-padding-top: 80px; /* altura aproximada da navbar */
+}

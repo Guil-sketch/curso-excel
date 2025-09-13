@@ -19,6 +19,7 @@
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
+html{ scroll-padding-top: 80px; } /* evita navbar sobrepor âncoras */
 body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: var(--bg-grad);
@@ -33,7 +34,9 @@ body{
   padding: 10px 16px;
   box-shadow: 0 6px 16px rgba(0,0,0,.1);
 }
-.navbar .brand img{height:34px;width:auto;border-radius:6px;background:#fff}
+.navbar .brand img{height:36px;width:auto;}
+
+/* Menu */
 .menu{display:flex; gap:22px; margin-left:auto}
 .menu a{color:#fff; text-decoration:none; font-weight:700}
 .menu a:hover{opacity:.9}
@@ -115,6 +118,34 @@ body{
 }
 .btn:hover{background: var(--excel-dark); transform: translateY(-1px)}
 
+/* Botão outline (CSV) – legível no tema claro e escuro */
+.btn-outline{
+  display:inline-block; padding:12px 16px;
+  background: transparent; color: var(--excel);
+  border:2px solid var(--excel); border-radius:10px; font-weight:800; text-decoration:none;
+  transition:.2s ease;
+}
+.btn-outline:hover{
+  background: rgba(33,163,102,.08);
+}
+:root[data-theme="dark"] .btn-outline{
+  color:#8ef0bd; border-color:#46d08d;
+}
+:root[data-theme="dark"] .btn-outline:hover{
+  background: rgba(70,208,141,.12);
+}
+
+/* Exercícios */
+.ex-list{ display:grid; gap:12px }
+.ex-item{
+  display:flex; gap:12px; align-items:center; justify-content:space-between;
+  background: var(--card); border:1px solid var(--border);
+  border-radius:12px; padding:12px 14px;
+}
+.ex-info h3{ margin:4px 0; color: var(--excel) }
+.ex-info p{ margin:0; color: var(--muted) }
+.ex-actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap }
+
 /* Formulário */
 .form{display:grid; gap:12px}
 .form input,.form textarea{
@@ -122,6 +153,11 @@ body{
   border:1px solid var(--border); font-size:16px
 }
 .form textarea{min-height:120px}
+/* inputs claros no tema claro */
+:root[data-theme="light"] .form input,
+:root[data-theme="light"] .form textarea{
+  background:#fff; color:#000;
+}
 
 /* Footer */
 .footer{ text-align:center; color:#6b7280; padding:24px }
@@ -149,22 +185,16 @@ body{
 }
 .to-top.show{ opacity:1; pointer-events:auto; }
 
-/* Botão flutuante WhatsApp */
+/* Botão flutuante WhatsApp (com SVG) */
 .whats{
   position: fixed; right: 18px; bottom: 18px;
-  width: 56px; height:56px; line-height:56px; text-align:center;
-  font-size:26px; text-decoration:none; border-radius:50%;
-  background:#25D366; color:#fff;
-  box-shadow:0 10px 24px rgba(37,211,102,.35);
+  width: 56px; height:56px;
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none; border-radius:50%;
+  background: #25D366; color:#fff;
+  box-shadow: 0 10px 24px rgba(37,211,102,.35);
 }
-
-/* Ícone SVG dentro do botão */
-.whats svg {
-  width: 28px;
-  height: 28px;
-  fill: #fff;
-  vertical-align: middle;
-}
+.whats svg{ width:28px; height:28px; fill:#fff }
 
 /* Foco acessível */
 :focus-visible{ outline:3px solid var(--excel); outline-offset:3px }
@@ -180,33 +210,4 @@ body{
   .menu.open{display:flex}
   .secao{margin:16px 12px; padding:20px}
   .hero-banner{display:none}
-}
-
-/* ===== Exercícios ===== */
-.ex-list{ display:grid; gap:12px }
-.ex-item{
-  display:flex; gap:12px; align-items:center; justify-content:space-between;
-  background: var(--card); border:1px solid var(--border);
-  border-radius:12px; padding:12px 14px;
-}
-.ex-info h3{ margin:4px 0; color: var(--excel) }
-.ex-info p{ margin:0; color: var(--muted) }
-.ex-actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap }
-@media (max-width:700px){
-  .ex-item{ flex-direction:column; align-items:stretch }
-  .ex-actions{ justify-content:flex-start }
-}
-
-/* === Ajustes extras === */
-
-/* Corrige inputs no tema claro */
-:root[data-theme="light"] .form input,
-:root[data-theme="light"] .form textarea {
-  background: #fff;
-  color: #000;
-}
-
-/* Navbar fixa não cobrir conteúdo */
-html {
-  scroll-padding-top: 80px; /* altura aproximada da navbar */
 }

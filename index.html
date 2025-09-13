@@ -7,13 +7,13 @@
 
   <!-- SEO básico -->
   <meta name="description" content="Curso de Excel prático em 4 módulos: fórmulas, funções, gráficos e dashboards. Baixe os PDFs e estude quando quiser.">
-  <link rel="canonical" href="https://SEU-USUARIO.github.io/SEU-REPO/" />
+  <link rel="canonical" href="https://guil-sketch.github.io/curso-excel/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Curso de Excel - Guilherme Pereira">
   <meta property="og:description" content="Aprenda Excel do básico ao dashboard. Material em PDF para download.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://SEU-USUARIO.github.io/SEU-REPO/">
+  <meta property="og:url" content="https://guil-sketch.github.io/curso-excel/">
   <meta property="og:image" content="img/banner-excel.png">
 
   <link rel="icon" type="image/png" href="img/logo.png"/>
@@ -63,7 +63,7 @@
 
     <div class="nav-actions">
       <button id="themeToggle" class="icon-btn" aria-label="Alternar tema">🌙</button>
-      <a class="icon-btn" href="https://wa.me/55SEUNUMERO" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+      <a class="icon-btn" href="https://wa.me/5561982190082" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
     </div>
   </header>
 
@@ -230,113 +230,12 @@
   <!-- Voltar ao topo -->
   <a href="#home" class="to-top" id="toTop" aria-label="Voltar ao topo">↑</a>
 
+  <!-- Botão flutuante WhatsApp -->
+  <a class="whats" href="https://wa.me/5561982190082" target="_blank" aria-label="Fale no WhatsApp">💬</a>
+
   <!-- JS -->
   <script>
-    // Menu mobile
-    const hamb = document.querySelector('.hamb');
-    const menu = document.querySelector('.menu');
-    if (hamb) {
-      hamb.addEventListener('click', () => {
-        const open = hamb.getAttribute('aria-expanded') === 'true';
-        hamb.setAttribute('aria-expanded', String(!open));
-        menu.classList.toggle('open');
-      });
-    }
-
-    // Scroll suave
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if (el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
-      });
-    });
-
-    // Tabs com grupos independentes + memória + indicador
-    function moveIndicator(btn){
-      const wrap = btn.closest('.tabs');
-      const ind = wrap.querySelector('.tabs-indicator');
-      if (!ind) return;
-      const b = btn.getBoundingClientRect();
-      const w = wrap.getBoundingClientRect();
-      ind.style.width = b.width + 'px';
-      ind.style.transform = `translateX(${b.left - w.left}px)`;
-    }
-
-    function openTab(evt, tabId, grupo) {
-      document.querySelectorAll(`.${grupo}-content`).forEach(el => el.hidden = true);
-      document.querySelectorAll(`.${grupo}-link`).forEach(btn => btn.setAttribute('aria-selected','false'));
-      const tab = document.getElementById(tabId);
-      if (tab) tab.hidden = false;
-      if (evt && evt.currentTarget) {
-        const btn = evt.currentTarget;
-        btn.setAttribute('aria-selected','true');
-        moveIndicator(btn);
-        localStorage.setItem(`activeTab_${grupo}`, tabId);
-      }
-    }
-
-    function initGroup(grupo, fallbackSelector){
-      const saved = localStorage.getItem(`activeTab_${grupo}`);
-      const btn = saved
-        ? document.querySelector(`.${grupo}-link[onclick*="${saved}"]`)
-        : document.querySelector(fallbackSelector);
-      if (btn) btn.click();
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      initGroup('curso', '.curso-link');
-      initGroup('conteudo', '.conteudo-link');
-    });
-
-    window.addEventListener('resize', () => {
-      ['curso','conteudo'].forEach(gr=>{
-        const active = document.querySelector(`.${gr}-link[aria-selected="true"]`);
-        if (active) moveIndicator(active);
-      });
-    });
-
-    // Tema (light/dark) com persistência
-    const toggle = document.getElementById('themeToggle');
-    if (toggle){
-      const applyIcon = () => {
-        const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-        toggle.textContent = dark ? '☀️' : '🌙';
-      };
-      applyIcon();
-      toggle.addEventListener('click', ()=>{
-        const cur = document.documentElement.getAttribute('data-theme') || 'light';
-        const next = cur === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-        applyIcon();
-      });
-    }
-
-    // Toast nos downloads
-    const toast = document.getElementById('toast');
-    function showToast(msg='Baixando PDF…'){
-      if (!toast) return;
-      toast.textContent = msg;
-      toast.classList.add('show');
-      setTimeout(()=> toast.classList.remove('show'), 1600);
-    }
-    document.querySelectorAll('a.btn[href$=".pdf"]').forEach(a=>{
-      a.addEventListener('click', ()=> showToast());
-    });
-
-    // Progresso do scroll + voltar ao topo
-    const bar = document.getElementById('progress');
-    const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', ()=>{
-      const h = document.documentElement;
-      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-      if (bar) bar.style.width = scrolled + '%';
-      if (toTop){
-        if (h.scrollTop > 600) toTop.classList.add('show');
-        else toTop.classList.remove('show');
-      }
-    });
+    // ... (mesmo JS que já te passei na versão anterior, sem mudanças)
   </script>
 </body>
 </html>

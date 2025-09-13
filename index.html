@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Curso de Excel - Guilherme Pereira</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="icon" type="image/png" href="img/logo.png"/>
+</head>
+<body>
+
+  <!-- Cabeçalho com menu suspenso -->
+  <header>
+    <nav>
+      <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+      <ul id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#curso-excel">Curso</a></li>
+        <li><a href="#conteudo">Conteúdo</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Home -->
+  <section id="home" class="bloco home">
+    <div class="home-content">
+      <div class="home-text">
+        <h2>Aprenda <span>Excel</span> sem dificuldade</h2>
+        <p>Domine planilhas, fórmulas e gráficos de forma prática e objetiva.</p>
+        <div class="cta">
+          <a href="#curso-excel" class="btn btn-excel">Quero aprender Excel</a>
+        </div>
+      </div>
+      <div class="logo-card">
+        <img src="img/logo.png" alt="Logo Guilherme Pereira">
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre" class="bloco sobre">
+    <h2>Sobre mim</h2>
+    <p>Sou Guilherme Pereira, especialista em Excel. Ajudo profissionais a transformar
+    dados em resultados, usando técnicas que aceleram o dia a dia e elevam a qualidade dos relatórios.</p>
+  </section>
+
+  <!-- Curso Excel -->
+  <section id="curso-excel" class="bloco curso">
+    <div class="banner">
+      <img src="img/banner-excel.png" alt="Banner Excel">
+    </div>
+    <h2>Curso de Excel</h2>
+    <p>Confira os módulos disponíveis para download:</p>
+
+    <div class="modulos">
+      <div class="modulo"><h3>Módulo 1 – Introdução ao Excel</h3><a href="arquivos/excel/modulo1.pdf" class="btn btn-excel" download>Baixar Arquivo</a></div>
+      <div class="modulo"><h3>Módulo 2 – Atalhos e Formatação</h3><a href="arquivos/excel/modulo2.pdf" class="btn btn-excel" download>Baixar Arquivo</a></div>
+      <div class="modulo"><h3>Módulo 3 – Funções Utilizadas no Mercado de Trabalho</h3><a href="arquivos/excel/modulo3.pdf" class="btn btn-excel" download>Baixar Arquivo</a></div>
+      <div class="modulo"><h3>Módulo 4 – Tabelas Dinâmicas e Gráficos</h3><a href="arquivos/excel/modulo4.pdf" class="btn btn-excel" download>Baixar Arquivo</a></div>
+    </div>
+  </section>
+
+  <!-- Conteúdo Programático -->
+  <section id="conteudo" class="bloco">
+    <h2>Conteúdo Programático</h2>
+    <ul class="lista-conteudo">
+      <li>
+        <strong>1. Introdução ao Excel</strong><br>
+        Interface e elementos principais; Configurações iniciais; Tipos de dados; Salvamento e compatibilidade.
+      </li>
+      <li>
+        <strong>2. Atalhos e Formatação</strong><br>
+        Atalhos essenciais; Formatação de células; Formatação condicional; Congelamento de painéis.
+      </li>
+      <li>
+        <strong>3. Funções Utilizadas no Mercado de Trabalho</strong><br>
+        SOMA, MÉDIA, MÍNIMO, MÁXIMO, CONT.SE; SE, SEERRO, E, OU; CONCAT, TEXTO,
+        PROCURAR, ESQUERDA/DIREITA; Funções de data/hora; PROCV, PROCH, XLOOKUP.
+      </li>
+      <li>
+        <strong>4. Tabelas Dinâmicas e Gráficos</strong><br>
+        Criação e personalização; Segmentações e filtros; Gráficos dinâmicos e estáticos; Personalização para relatórios.
+      </li>
+    </ul>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" class="bloco contato">
+    <h2>Contato</h2>
+    <p>Preencha o formulário abaixo ou fale comigo direto no WhatsApp!</p>
+
+    <form action="https://formsubmit.co/guilsilva7@outlook.com" method="POST">
+      <input type="text" name="name" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu e-mail" required>
+      <textarea name="message" rows="5" placeholder="Sua mensagem" required></textarea>
+      <input type="hidden" name="_subject" value="Nova mensagem do site!">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="box">
+      <button type="submit">Enviar</button>
+    </form>
+
+    <p style="text-align:center; margin-top:20px;">
+      <a href="https://wa.me/5561982190082" target="_blank" class="btn">Falar no WhatsApp</a>
+    </p>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 Guilherme Pereira</p>
+  </footer>
+
+  <script>
+    function toggleMenu(){ document.getElementById("menu").classList.toggle("active"); }
+  </script>
+</body>
+</html>

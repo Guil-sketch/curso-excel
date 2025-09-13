@@ -4,15 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Curso de Excel - Guilherme Pereira</title>
-  <link rel="stylesheet" href="css/style.css?v=3"/>
-  <link rel="icon" type="image/png" href="img/logo_transparente.png"/>
+
+  <!-- SEO básico -->
+  <meta name="description" content="Curso de Excel prático em 4 módulos: fórmulas, funções, gráficos e dashboards. Baixe os PDFs e estude quando quiser.">
+  <link rel="canonical" href="https://SEU-USUARIO.github.io/SEU-REPO/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Curso de Excel - Guilherme Pereira">
+  <meta property="og:description" content="Aprenda Excel do básico ao dashboard. Material em PDF para download.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://SEU-USUARIO.github.io/SEU-REPO/">
+  <meta property="og:image" content="img/banner-excel.png">
+
+  <link rel="icon" type="image/png" href="img/logo.png"/>
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Aplica o tema salvo antes do paint -->
+  <script>
+    (function(){
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Course",
+    "name":"Curso de Excel - 4 Módulos",
+    "description":"Curso prático de Excel com materiais para download.",
+    "provider": {"@type":"Person","name":"Guilherme Pereira"}
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css?v=5"/>
 </head>
 <body>
 
+  <!-- Barra de progresso -->
+  <div class="progress" id="progress"></div>
+
   <!-- Navbar -->
   <header class="navbar">
-    <a class="brand" href="#home"><img src="img/logo_transparente.png" alt="GP" /></a>
+    <a class="brand" href="#home" aria-label="Início">
+      <img src="img/logo.png" alt="Logo Guilherme Pereira" loading="lazy"/>
+    </a>
+
     <button class="hamb" aria-label="Abrir menu" aria-expanded="false">&#9776;</button>
+
     <nav class="menu">
       <a href="#home">Home</a>
       <a href="#sobre">Sobre</a>
@@ -20,49 +60,56 @@
       <a href="#conteudo">Conteúdo</a>
       <a href="#contato">Contato</a>
     </nav>
+
+    <div class="nav-actions">
+      <button id="themeToggle" class="icon-btn" aria-label="Alternar tema">🌙</button>
+      <a class="icon-btn" href="https://wa.me/55SEUNUMERO" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+    </div>
   </header>
 
   <!-- Hero -->
-  <section id="home" class="secao hero">
+  <section id="home" class="secao hero" aria-label="Apresentação">
     <div class="hero-inner">
       <div class="hero-texto">
         <h1>Curso de Excel</h1>
         <p>Planilhas, fórmulas e gráficos na prática — do básico ao dashboard.</p>
         <a class="btn" href="#curso">Ver módulos</a>
       </div>
-      <img class="hero-banner" src="img/banner-excel.png" alt="Banner Curso Excel" />
+      <img class="hero-banner" src="img/banner-excel.png" alt="Banner do curso de Excel" loading="lazy"/>
     </div>
   </section>
 
   <!-- Sobre -->
-  <section id="sobre" class="secao">
-    <h2>Sobre mim</h2>
-    <p>Sou Guilherme Pereira. Ajudo profissionais a transformar dados em resultados com Excel aplicado ao dia a dia do trabalho.</p>
+  <section id="sobre" class="secao" aria-labelledby="tit-sobre">
+    <h2 id="tit-sobre">Sobre mim</h2>
+    <p>Sou Guilherme Pereira. Ajudo profissionais a transformar dados em resultados com Excel aplicado ao dia a dia.</p>
   </section>
 
-  <!-- Curso (GRUPO 1) -->
-  <section id="curso" class="secao">
-    <h2>Curso de Excel – 4 Módulos</h2>
+  <!-- CURSO (GRUPO 1) -->
+  <section id="curso" class="secao" aria-labelledby="tit-curso">
+    <h2 id="tit-curso">Curso de Excel – 4 Módulos</h2>
     <p>Escolha um módulo para ver o conteúdo e baixar o PDF:</p>
 
-    <!-- Abas: botões -->
     <div class="tabs curso-tabs" role="tablist" aria-label="Módulos do curso">
-      <button class="pill curso-link" role="tab" onclick="openTab(event, 'mod1', 'curso')" aria-selected="true">
+      <button class="pill curso-link" role="tab" aria-selected="true"
+              onclick="openTab(event, 'mod1', 'curso')">
         <span class="ico">📘</span> Módulo 1
       </button>
-      <button class="pill curso-link" role="tab" onclick="openTab(event, 'mod2', 'curso')" aria-selected="false">
+      <button class="pill curso-link" role="tab" aria-selected="false"
+              onclick="openTab(event, 'mod2', 'curso')">
         <span class="ico">⌨️</span> Módulo 2
       </button>
-      <button class="pill curso-link" role="tab" onclick="openTab(event, 'mod3', 'curso')" aria-selected="false">
+      <button class="pill curso-link" role="tab" aria-selected="false"
+              onclick="openTab(event, 'mod3', 'curso')">
         <span class="ico">🧮</span> Módulo 3
       </button>
-      <button class="pill curso-link" role="tab" onclick="openTab(event, 'mod4', 'curso')" aria-selected="false">
+      <button class="pill curso-link" role="tab" aria-selected="false"
+              onclick="openTab(event, 'mod4', 'curso')">
         <span class="ico">📊</span> Módulo 4
       </button>
       <span class="tabs-indicator" data-group="curso"></span>
     </div>
 
-    <!-- Conteúdos -->
     <div id="mod1" class="tabpanel curso-content" role="tabpanel">
       <h3>Introdução ao Excel</h3>
       <ul class="grid">
@@ -78,7 +125,7 @@
       <ul class="grid">
         <li>Atalhos essenciais</li>
         <li>Formatação condicional</li>
-        <li>Estilos e tabelas</li>
+        <li>Estilos e Tabelas</li>
       </ul>
       <a href="arquivos/excel/modulo2.pdf" class="btn" download>Baixar PDF</a>
     </div>
@@ -104,22 +151,26 @@
     </div>
   </section>
 
-  <!-- Conteúdo Programático (GRUPO 2) -->
-  <section id="conteudo" class="secao">
-    <h2>Conteúdo Programático</h2>
+  <!-- CONTEÚDO PROGRAMÁTICO (GRUPO 2) -->
+  <section id="conteudo" class="secao" aria-labelledby="tit-conteudo">
+    <h2 id="tit-conteudo">Conteúdo Programático</h2>
     <p>Veja os tópicos por trilha:</p>
 
     <div class="tabs conteudo-tabs" role="tablist" aria-label="Trilhas do conteúdo">
-      <button class="pill conteudo-link" role="tab" onclick="openTab(event, 'basico', 'conteudo')" aria-selected="true">
+      <button class="pill conteudo-link" role="tab" aria-selected="true"
+              onclick="openTab(event, 'basico', 'conteudo')">
         <span class="ico">🌱</span> Básico
       </button>
-      <button class="pill conteudo-link" role="tab" onclick="openTab(event, 'intermediario', 'conteudo')" aria-selected="false">
+      <button class="pill conteudo-link" role="tab" aria-selected="false"
+              onclick="openTab(event, 'intermediario', 'conteudo')">
         <span class="ico">🚀</span> Intermediário
       </button>
-      <button class="pill conteudo-link" role="tab" onclick="openTab(event, 'funcoes', 'conteudo')" aria-selected="false">
+      <button class="pill conteudo-link" role="tab" aria-selected="false"
+              onclick="openTab(event, 'funcoes', 'conteudo')">
         <span class="ico">🧠</span> Funções
       </button>
-      <button class="pill conteudo-link" role="tab" onclick="openTab(event, 'graficos', 'conteudo')" aria-selected="false">
+      <button class="pill conteudo-link" role="tab" aria-selected="false"
+              onclick="openTab(event, 'graficos', 'conteudo')">
         <span class="ico">📈</span> Gráficos
       </button>
       <span class="tabs-indicator" data-group="conteudo"></span>
@@ -159,9 +210,9 @@
   </section>
 
   <!-- Contato -->
-  <section id="contato" class="secao">
-    <h2>Contato</h2>
-    <form class="form">
+  <section id="contato" class="secao" aria-labelledby="tit-contato">
+    <h2 id="tit-contato">Contato</h2>
+    <form class="form" onsubmit="event.preventDefault(); alert('Mensagem enviada!');">
       <input type="text" placeholder="Seu nome" required>
       <input type="email" placeholder="Seu email" required>
       <textarea placeholder="Sua mensagem" required></textarea>
@@ -173,8 +224,11 @@
     <p>&copy; 2025 Guilherme Pereira — Curso de Excel</p>
   </footer>
 
-  <!-- Botão flutuante WhatsApp -->
-  <a class="whats" href="https://wa.me/5561982190082" target="_blank" aria-label="Fale no WhatsApp">💬</a>
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite">Baixando PDF…</div>
+
+  <!-- Voltar ao topo -->
+  <a href="#home" class="to-top" id="toTop" aria-label="Voltar ao topo">↑</a>
 
   <!-- JS -->
   <script>
@@ -189,46 +243,99 @@
       });
     }
 
-    // Tabs com grupos independentes + indicador animado
-    function moveIndicator(group, btn) {
-      const wrap = btn.parentElement;                // .tabs
-      const indicator = wrap.querySelector('.tabs-indicator');
-      if (!indicator) return;
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+      });
+    });
+
+    // Tabs com grupos independentes + memória + indicador
+    function moveIndicator(btn){
+      const wrap = btn.closest('.tabs');
+      const ind = wrap.querySelector('.tabs-indicator');
+      if (!ind) return;
       const b = btn.getBoundingClientRect();
       const w = wrap.getBoundingClientRect();
-      indicator.style.width = b.width + 'px';
-      indicator.style.transform = `translateX(${b.left - w.left}px)`;
+      ind.style.width = b.width + 'px';
+      ind.style.transform = `translateX(${b.left - w.left}px)`;
     }
 
     function openTab(evt, tabId, grupo) {
       document.querySelectorAll(`.${grupo}-content`).forEach(el => el.hidden = true);
       document.querySelectorAll(`.${grupo}-link`).forEach(btn => btn.setAttribute('aria-selected','false'));
-
       const tab = document.getElementById(tabId);
       if (tab) tab.hidden = false;
-
       if (evt && evt.currentTarget) {
         const btn = evt.currentTarget;
         btn.setAttribute('aria-selected','true');
-        moveIndicator(grupo, btn);
+        moveIndicator(btn);
+        localStorage.setItem(`activeTab_${grupo}`, tabId);
       }
     }
 
-    // Inicialização: ativa a 1ª aba de cada grupo e posiciona indicador
-    window.addEventListener('DOMContentLoaded', () => {
-      const firstCurso = document.querySelector('.curso-link');
-      if (firstCurso) { firstCurso.click(); }
+    function initGroup(grupo, fallbackSelector){
+      const saved = localStorage.getItem(`activeTab_${grupo}`);
+      const btn = saved
+        ? document.querySelector(`.${grupo}-link[onclick*="${saved}"]`)
+        : document.querySelector(fallbackSelector);
+      if (btn) btn.click();
+    }
 
-      const firstConteudo = document.querySelector('.conteudo-link');
-      if (firstConteudo) { firstConteudo.click(); }
+    window.addEventListener('DOMContentLoaded', () => {
+      initGroup('curso', '.curso-link');
+      initGroup('conteudo', '.conteudo-link');
     });
 
-    // Recalcula indicador ao redimensionar
     window.addEventListener('resize', () => {
-      const activeCurso = document.querySelector('.curso-link[aria-selected="true"]');
-      if (activeCurso) moveIndicator('curso', activeCurso);
-      const activeConteudo = document.querySelector('.conteudo-link[aria-selected="true"]');
-      if (activeConteudo) moveIndicator('conteudo', activeConteudo);
+      ['curso','conteudo'].forEach(gr=>{
+        const active = document.querySelector(`.${gr}-link[aria-selected="true"]`);
+        if (active) moveIndicator(active);
+      });
+    });
+
+    // Tema (light/dark) com persistência
+    const toggle = document.getElementById('themeToggle');
+    if (toggle){
+      const applyIcon = () => {
+        const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        toggle.textContent = dark ? '☀️' : '🌙';
+      };
+      applyIcon();
+      toggle.addEventListener('click', ()=>{
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = cur === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        applyIcon();
+      });
+    }
+
+    // Toast nos downloads
+    const toast = document.getElementById('toast');
+    function showToast(msg='Baixando PDF…'){
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(()=> toast.classList.remove('show'), 1600);
+    }
+    document.querySelectorAll('a.btn[href$=".pdf"]').forEach(a=>{
+      a.addEventListener('click', ()=> showToast());
+    });
+
+    // Progresso do scroll + voltar ao topo
+    const bar = document.getElementById('progress');
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      if (bar) bar.style.width = scrolled + '%';
+      if (toTop){
+        if (h.scrollTop > 600) toTop.classList.add('show');
+        else toTop.classList.remove('show');
+      }
     });
   </script>
 </body>

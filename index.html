@@ -40,7 +40,7 @@
   </script>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css?v=10"/>
+  <link rel="stylesheet" href="css/style.css?v=11"/>
 </head>
 <body>
 
@@ -161,7 +161,7 @@
         <li>Células, linhas e colunas</li>
         <li>Primeiras fórmulas</li>
       </ul>
-      <a href="arquivos/excel/modulo1.pdf" class="btn" download>Baixar PDF</a>
+      <a href="arquivos/excel/modulo1.pdf" class="btn" download onclick="showToast('Baixando Módulo 1…')">Baixar PDF</a>
     </div>
 
     <div id="mod2" class="tabpanel" role="tabpanel" hidden>
@@ -171,7 +171,7 @@
         <li>Formatação condicional</li>
         <li>Estilos e Tabelas</li>
       </ul>
-      <a href="arquivos/excel/modulo2.pdf" class="btn" download>Baixar PDF</a>
+      <a href="arquivos/excel/modulo2.pdf" class="btn" download onclick="showToast('Baixando Módulo 2…')">Baixar PDF</a>
     </div>
 
     <div id="mod3" class="tabpanel" role="tabpanel" hidden>
@@ -181,7 +181,7 @@
         <li>PROCV / XLOOKUP</li>
         <li>SOMASE / CONT.SE / TEXTO / DATAS</li>
       </ul>
-      <a href="arquivos/excel/modulo3.pdf" class="btn" download>Baixar PDF</a>
+      <a href="arquivos/excel/modulo3.pdf" class="btn" download onclick="showToast('Baixando Módulo 3…')">Baixar PDF</a>
     </div>
 
     <div id="mod4" class="tabpanel" role="tabpanel" hidden>
@@ -191,7 +191,7 @@
         <li>Segmentações e botões</li>
         <li>Layout e storytelling</li>
       </ul>
-      <a href="arquivos/excel/modulo4.pdf" class="btn" download>Baixar PDF</a>
+      <a href="arquivos/excel/modulo4.pdf" class="btn" download onclick="showToast('Baixando Módulo 4…')">Baixar PDF</a>
     </div>
   </section>
 
@@ -237,11 +237,20 @@
   <!-- Contato -->
   <section id="contato" class="secao" aria-labelledby="tit-contato">
     <h2 id="tit-contato">Contato</h2>
-    <form class="form" onsubmit="event.preventDefault(); alert('Mensagem enviada!');">
-      <input type="text" placeholder="Seu nome" required>
-      <input type="email" placeholder="Seu email" required>
-      <textarea placeholder="Sua mensagem" required></textarea>
-      <button type="submit" class="btn">Enviar</button>
+
+    <!-- IMPORTANTE: troque SEU_EMAIL_AQUI pelo seu e-mail -->
+    <form id="contatoForm" class="form" novalidate>
+      <input name="name" type="text" placeholder="Seu nome" required />
+      <input name="email" type="email" placeholder="Seu email" required />
+      <textarea name="message" placeholder="Sua mensagem" required></textarea>
+
+      <!-- Campos extras (FormSubmit) -->
+      <input type="hidden" name="_subject" value="Contato via Curso de Excel" />
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+      <button id="btnEnviar" type="submit" class="btn">
+        <span class="btn-label">Enviar</span>
+        <span class="btn-spinner" aria-hidden="true"></span>
+      </button>
     </form>
   </section>
 
@@ -326,13 +335,13 @@
       });
     }
 
-    // Toast
+    // Toast utilitário
     const toast = document.getElementById('toast');
-    function showToast(msg='Baixando arquivo…'){
+    function showToast(msg='Tudo certo!'){
       if (!toast) return;
       toast.textContent = msg;
       toast.classList.add('show');
-      setTimeout(()=> toast.classList.remove('show'), 1600);
+      setTimeout(()=> toast.classList.remove('show'), 1800);
     }
 
     // Progresso + Voltar ao topo
@@ -347,6 +356,57 @@
         else toTop.classList.remove('show');
       }
     });
+
+    // ===== Formulário com FormSubmit (AJAX) =====
+    // 1) Troque o e-mail abaixo (SEU_EMAIL_AQUI) pelo e-mail que vai receber as mensagens.
+    const FORM_ENDPOINT = "https://formsubmit.co/ajax/SEU_EMAIL_AQUI";
+
+    const form = document.getElementById('contatoForm');
+    const btn  = document.getElementById('btnEnviar');
+    const label = btn?.querySelector('.btn-label');
+
+    function setLoading(state){
+      if (!btn) return;
+      btn.disabled = state;
+      btn.classList.toggle('is-loading', state);
+      if (label) label.textContent = state ? 'Enviando…' : 'Enviar';
+    }
+
+    if (form){
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+
+        // Validação nativa (HTML5)
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        // Honeypot
+        if (form.querySelector('input[name="_honey"]')?.value) return;
+
+        try{
+          setLoading(true);
+          const data = new FormData(form);
+          const resp = await fetch(FORM_ENDPOINT, {
+            method: "POST",
+            headers: { "Accept": "application/json" },
+            body: data
+          });
+
+          if (resp.ok){
+            form.reset();
+            showToast('Mensagem enviada com sucesso!');
+          } else {
+            showToast('Não foi possível enviar. Tente novamente.');
+          }
+        } catch(err){
+          showToast('Falha de conexão. Verifique sua internet.');
+        } finally{
+          setLoading(false);
+        }
+      });
+    }
   </script>
 </body>
 </html>

@@ -4,62 +4,78 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Curso de Excel - Guilherme Pereira</title>
-  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/style.css?v=3"/>
   <link rel="icon" type="image/png" href="img/logo.png"/>
 </head>
 <body>
 
-  <!-- Menu -->
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#curso">Curso</a></li>
-        <li><a href="#conteudo">Conteúdo</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
+  <!-- Navbar -->
+  <header class="navbar">
+    <a class="brand" href="#home"><img src="img/logo.png" alt="GP" /></a>
+    <button class="hamb" aria-label="Abrir menu" aria-expanded="false">&#9776;</button>
+    <nav class="menu">
+      <a href="#home">Home</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#curso">Curso</a>
+      <a href="#conteudo">Conteúdo</a>
+      <a href="#contato">Contato</a>
     </nav>
   </header>
 
-  <!-- Home -->
-  <section id="home" class="secao">
-    <img src="img/banner-excel.png" alt="Banner Curso Excel" class="banner">
-    <h1>Curso de Excel – 4 Módulos</h1>
-    <img src="img/logo.png" alt="Logo GP" class="logo">
+  <!-- Hero -->
+  <section id="home" class="secao hero">
+    <div class="hero-inner">
+      <div class="hero-texto">
+        <h1>Curso de Excel</h1>
+        <p>Planilhas, fórmulas e gráficos na prática — do básico ao dashboard.</p>
+        <a class="btn" href="#curso">Ver módulos</a>
+      </div>
+      <img class="hero-banner" src="img/banner-excel.png" alt="Banner Curso Excel" />
+    </div>
   </section>
 
   <!-- Sobre -->
   <section id="sobre" class="secao">
     <h2>Sobre mim</h2>
-    <p>Olá! Eu sou Guilherme Pereira e preparei este curso de Excel para quem deseja dominar a ferramenta e aplicá-la no mercado de trabalho.</p>
+    <p>Sou Guilherme Pereira. Ajudo profissionais a transformar dados em resultados com Excel aplicado ao dia a dia do trabalho.</p>
   </section>
 
-  <!-- Curso em abas -->
+  <!-- Curso (GRUPO 1) -->
   <section id="curso" class="secao">
-    <h2>Curso de Excel</h2>
-    <p>Clique no módulo para visualizar e baixar o material:</p>
+    <h2>Curso de Excel – 4 Módulos</h2>
+    <p>Escolha um módulo para ver o conteúdo e baixar o PDF:</p>
 
-    <div class="tabs">
-      <button class="tablink" onclick="openTab(event, 'mod1')">Módulo 1</button>
-      <button class="tablink" onclick="openTab(event, 'mod2')">Módulo 2</button>
-      <button class="tablink" onclick="openTab(event, 'mod3')">Módulo 3</button>
-      <button class="tablink" onclick="openTab(event, 'mod4')">Módulo 4</button>
+    <!-- Abas: botões -->
+    <div class="tabs curso-tabs" role="tablist" aria-label="Módulos do curso">
+      <button class="pill curso-link" role="tab" onclick="openTab(event, 'mod1', 'curso')" aria-selected="true">
+        <span class="ico">📘</span> Módulo 1
+      </button>
+      <button class="pill curso-link" role="tab" onclick="openTab(event, 'mod2', 'curso')" aria-selected="false">
+        <span class="ico">⌨️</span> Módulo 2
+      </button>
+      <button class="pill curso-link" role="tab" onclick="openTab(event, 'mod3', 'curso')" aria-selected="false">
+        <span class="ico">🧮</span> Módulo 3
+      </button>
+      <button class="pill curso-link" role="tab" onclick="openTab(event, 'mod4', 'curso')" aria-selected="false">
+        <span class="ico">📊</span> Módulo 4
+      </button>
+      <span class="tabs-indicator" data-group="curso"></span>
     </div>
 
-    <div id="mod1" class="tabcontent">
-      <h3>Módulo 1 – Introdução ao Excel</h3>
-      <ul>
+    <!-- Conteúdos -->
+    <div id="mod1" class="tabpanel curso-content" role="tabpanel">
+      <h3>Introdução ao Excel</h3>
+      <ul class="grid">
         <li>Interface e navegação</li>
-        <li>Linhas, colunas e células</li>
+        <li>Células, linhas e colunas</li>
         <li>Primeiras fórmulas</li>
       </ul>
       <a href="arquivos/excel/modulo1.pdf" class="btn" download>Baixar PDF</a>
     </div>
 
-    <div id="mod2" class="tabcontent" hidden>
-      <h3>Módulo 2 – Atalhos e Formatação</h3>
-      <ul>
+    <div id="mod2" class="tabpanel curso-content" role="tabpanel" hidden>
+      <h3>Atalhos e Formatação</h3>
+      <ul class="grid">
         <li>Atalhos essenciais</li>
         <li>Formatação condicional</li>
         <li>Estilos e tabelas</li>
@@ -67,68 +83,77 @@
       <a href="arquivos/excel/modulo2.pdf" class="btn" download>Baixar PDF</a>
     </div>
 
-    <div id="mod3" class="tabcontent" hidden>
-      <h3>Módulo 3 – Funções no Mercado</h3>
-      <ul>
-        <li>SE, PROCV/XLOOKUP</li>
-        <li>SOMASE, CONT.SE</li>
-        <li>Funções de texto e data</li>
+    <div id="mod3" class="tabpanel curso-content" role="tabpanel" hidden>
+      <h3>Funções do Mercado</h3>
+      <ul class="grid">
+        <li>SE / SEs aninhado</li>
+        <li>PROCV / XLOOKUP</li>
+        <li>SOMASE / CONT.SE / TEXTO / DATAS</li>
       </ul>
       <a href="arquivos/excel/modulo3.pdf" class="btn" download>Baixar PDF</a>
     </div>
 
-    <div id="mod4" class="tabcontent" hidden>
-      <h3>Módulo 4 – Gráficos e Dashboards</h3>
-      <ul>
-        <li>Gráficos básicos e avançados</li>
-        <li>Segmentações de dados</li>
-        <li>Construção de dashboards</li>
+    <div id="mod4" class="tabpanel curso-content" role="tabpanel" hidden>
+      <h3>Gráficos e Dashboards</h3>
+      <ul class="grid">
+        <li>Gráficos de colunas, linhas e pizza</li>
+        <li>Segmentações e botões</li>
+        <li>Layout e storytelling</li>
       </ul>
       <a href="arquivos/excel/modulo4.pdf" class="btn" download>Baixar PDF</a>
     </div>
   </section>
 
-  <!-- Conteúdo Programático em abas -->
+  <!-- Conteúdo Programático (GRUPO 2) -->
   <section id="conteudo" class="secao">
     <h2>Conteúdo Programático</h2>
-    <p>Explore os principais temas do curso:</p>
+    <p>Veja os tópicos por trilha:</p>
 
-    <div class="tabs">
-      <button class="tablink" onclick="openTab(event, 'basico')">Básico</button>
-      <button class="tablink" onclick="openTab(event, 'intermediario')">Intermediário</button>
-      <button class="tablink" onclick="openTab(event, 'funcoes')">Funções</button>
-      <button class="tablink" onclick="openTab(event, 'graficos')">Gráficos</button>
+    <div class="tabs conteudo-tabs" role="tablist" aria-label="Trilhas do conteúdo">
+      <button class="pill conteudo-link" role="tab" onclick="openTab(event, 'basico', 'conteudo')" aria-selected="true">
+        <span class="ico">🌱</span> Básico
+      </button>
+      <button class="pill conteudo-link" role="tab" onclick="openTab(event, 'intermediario', 'conteudo')" aria-selected="false">
+        <span class="ico">🚀</span> Intermediário
+      </button>
+      <button class="pill conteudo-link" role="tab" onclick="openTab(event, 'funcoes', 'conteudo')" aria-selected="false">
+        <span class="ico">🧠</span> Funções
+      </button>
+      <button class="pill conteudo-link" role="tab" onclick="openTab(event, 'graficos', 'conteudo')" aria-selected="false">
+        <span class="ico">📈</span> Gráficos
+      </button>
+      <span class="tabs-indicator" data-group="conteudo"></span>
     </div>
 
-    <div id="basico" class="tabcontent">
-      <ul>
-        <li>Introdução à interface</li>
-        <li>Salvando arquivos</li>
+    <div id="basico" class="tabpanel conteudo-content" role="tabpanel">
+      <ul class="grid">
+        <li>Interface, atalhos iniciais</li>
+        <li>Salvar/abrir, boas práticas</li>
         <li>Primeiras fórmulas</li>
       </ul>
     </div>
 
-    <div id="intermediario" class="tabcontent" hidden>
-      <ul>
-        <li>Atalhos do Excel</li>
+    <div id="intermediario" class="tabpanel conteudo-content" role="tabpanel" hidden>
+      <ul class="grid">
         <li>Formatação avançada</li>
-        <li>Tabelas dinâmicas simples</li>
+        <li>Tabelas e validação</li>
+        <li>Classificar e filtrar</li>
       </ul>
     </div>
 
-    <div id="funcoes" class="tabcontent" hidden>
-      <ul>
-        <li>SE, PROCV, CONT.SE</li>
-        <li>Funções de texto</li>
-        <li>Funções de data e hora</li>
+    <div id="funcoes" class="tabpanel conteudo-content" role="tabpanel" hidden>
+      <ul class="grid">
+        <li>SE, E, OU</li>
+        <li>PROCV / XLOOKUP</li>
+        <li>SOMASE / CONT.SE / TEXTO / DATA</li>
       </ul>
     </div>
 
-    <div id="graficos" class="tabcontent" hidden>
-      <ul>
-        <li>Gráficos de colunas e linhas</li>
-        <li>Gráficos de pizza</li>
-        <li>Dashboards integrados</li>
+    <div id="graficos" class="tabpanel conteudo-content" role="tabpanel" hidden>
+      <ul class="grid">
+        <li>Colunas, linhas, pizza</li>
+        <li>Segmentações</li>
+        <li>Dashboard aplicado</li>
       </ul>
     </div>
   </section>
@@ -136,51 +161,75 @@
   <!-- Contato -->
   <section id="contato" class="secao">
     <h2>Contato</h2>
-    <form>
+    <form class="form">
       <input type="text" placeholder="Seu nome" required>
       <input type="email" placeholder="Seu email" required>
       <textarea placeholder="Sua mensagem" required></textarea>
       <button type="submit" class="btn">Enviar</button>
     </form>
-    <p>Ou fale direto comigo:</p>
-    <a href="https://wa.me/55SEUNUMERO" class="btn">WhatsApp</a>
   </section>
 
-  <!-- Rodapé -->
-  <footer>
-    <p>&copy; 2025 Curso de Excel – Guilherme Pereira</p>
+  <footer class="footer">
+    <p>&copy; 2025 Guilherme Pereira — Curso de Excel</p>
   </footer>
 
-  <!-- Script das abas -->
+  <!-- Botão flutuante WhatsApp -->
+  <a class="whats" href="https://wa.me/55SEUNUMERO" target="_blank" aria-label="Fale no WhatsApp">💬</a>
+
+  <!-- JS -->
   <script>
-    function openTab(evt, tabId) {
-      // esconde todos
-      document.querySelectorAll('.tabcontent').forEach(el => {
-        el.hidden = true;
+    // Menu mobile
+    const hamb = document.querySelector('.hamb');
+    const menu = document.querySelector('.menu');
+    if (hamb) {
+      hamb.addEventListener('click', () => {
+        const open = hamb.getAttribute('aria-expanded') === 'true';
+        hamb.setAttribute('aria-expanded', String(!open));
+        menu.classList.toggle('open');
       });
-      // desmarca todas as abas
-      document.querySelectorAll('.tablink').forEach(btn => {
-        btn.setAttribute('aria-selected', 'false');
-      });
-      // mostra a escolhida
+    }
+
+    // Tabs com grupos independentes + indicador animado
+    function moveIndicator(group, btn) {
+      const wrap = btn.parentElement;                // .tabs
+      const indicator = wrap.querySelector('.tabs-indicator');
+      if (!indicator) return;
+      const b = btn.getBoundingClientRect();
+      const w = wrap.getBoundingClientRect();
+      indicator.style.width = b.width + 'px';
+      indicator.style.transform = `translateX(${b.left - w.left}px)`;
+    }
+
+    function openTab(evt, tabId, grupo) {
+      document.querySelectorAll(`.${grupo}-content`).forEach(el => el.hidden = true);
+      document.querySelectorAll(`.${grupo}-link`).forEach(btn => btn.setAttribute('aria-selected','false'));
+
       const tab = document.getElementById(tabId);
       if (tab) tab.hidden = false;
-      // marca a aba ativa
+
       if (evt && evt.currentTarget) {
-        evt.currentTarget.setAttribute('aria-selected', 'true');
-      } else {
-        const firstBtn = document.querySelector('.tablink');
-        if (firstBtn) firstBtn.setAttribute('aria-selected','true');
+        const btn = evt.currentTarget;
+        btn.setAttribute('aria-selected','true');
+        moveIndicator(grupo, btn);
       }
     }
-    // abre a primeira aba ao carregar
+
+    // Inicialização: ativa a 1ª aba de cada grupo e posiciona indicador
     window.addEventListener('DOMContentLoaded', () => {
-      const firstTab = document.querySelector('.tabcontent');
-      if (firstTab) firstTab.hidden = false;
-      const firstBtn = document.querySelector('.tablink');
-      if (firstBtn) firstBtn.setAttribute('aria-selected','true');
+      const firstCurso = document.querySelector('.curso-link');
+      if (firstCurso) { firstCurso.click(); }
+
+      const firstConteudo = document.querySelector('.conteudo-link');
+      if (firstConteudo) { firstConteudo.click(); }
+    });
+
+    // Recalcula indicador ao redimensionar
+    window.addEventListener('resize', () => {
+      const activeCurso = document.querySelector('.curso-link[aria-selected="true"]');
+      if (activeCurso) moveIndicator('curso', activeCurso);
+      const activeConteudo = document.querySelector('.conteudo-link[aria-selected="true"]');
+      if (activeConteudo) moveIndicator('conteudo', activeConteudo);
     });
   </script>
-
 </body>
 </html>

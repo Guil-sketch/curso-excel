@@ -9,14 +9,13 @@
 </head>
 <body>
 
-  <!-- Cabeçalho com menu suspenso -->
+  <!-- Menu -->
   <header>
     <nav>
-      <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
-      <ul id="menu">
+      <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#curso-excel">Curso</a></li>
+        <li><a href="#curso">Curso</a></li>
         <li><a href="#conteudo">Conteúdo</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
@@ -24,95 +23,164 @@
   </header>
 
   <!-- Home -->
-  <section id="home" class="bloco home">
-    <div class="home-content">
-      <div class="home-text">
-        <h2>Aprenda <span>Excel</span> sem dificuldade</h2>
-        <p>Domine planilhas, fórmulas e gráficos de forma prática e objetiva.</p>
-        <div class="cta">
-          <a href="#curso-excel" class="btn btn-excel">Quero aprender Excel</a>
-        </div>
-      </div>
-      <div class="logo-card">
-        <img src="img/logo_transparente.png" alt="Logo Guilherme Pereira">
-      </div>
-    </div>
+  <section id="home" class="secao">
+    <img src="img/banner-excel.png" alt="Banner Curso Excel" class="banner">
+    <h1>Curso de Excel – 4 Módulos</h1>
+    <img src="img/logo.png" alt="Logo GP" class="logo">
   </section>
 
   <!-- Sobre -->
-  <section id="sobre" class="bloco sobre">
+  <section id="sobre" class="secao">
     <h2>Sobre mim</h2>
-    <p>Sou Guilherme Pereira, especialista em Excel. Ajudo profissionais a transformar
-    dados em resultados, usando técnicas que aceleram o dia a dia e elevam a qualidade dos relatórios.</p>
+    <p>Olá! Eu sou Guilherme Pereira e preparei este curso de Excel para quem deseja dominar a ferramenta e aplicá-la no mercado de trabalho.</p>
   </section>
 
-  <!-- Curso Excel -->
-  <section id="curso-excel" class="bloco curso">
-    <div class="banner">
-      <img src="img/banner-excel.png" alt="Banner Excel">
-    </div>
+  <!-- Curso em abas -->
+  <section id="curso" class="secao">
     <h2>Curso de Excel</h2>
-    <p>Confira os módulos disponíveis para download:</p>
+    <p>Clique no módulo para visualizar e baixar o material:</p>
 
-    <div class="modulos">
-      <div class="modulo"><h3>Módulo 1 – Introdução ao Excel</h3><a href="arquivos/excel/modulo1.pdf" class="btn btn-excel" download>Baixar Arquivo</a></div>
-      <div class="modulo"><h3>Módulo 2 – Atalhos e Formatação</h3><a href="arquivos/excel/modulo2.pdf" class="btn btn-excel" download>Baixar Arquivo</a></div>
-      <div class="modulo"><h3>Módulo 3 – Funções Utilizadas no Mercado de Trabalho</h3><a href="arquivos/excel/modulo3.pdf" class="btn btn-excel" download>Baixar Arquivo</a></div>
-      <div class="modulo"><h3>Módulo 4 – Tabelas Dinâmicas e Gráficos</h3><a href="arquivos/excel/modulo4.pdf" class="btn btn-excel" download>Baixar Arquivo</a></div>
+    <div class="tabs">
+      <button class="tablink" onclick="openTab(event, 'mod1')">Módulo 1</button>
+      <button class="tablink" onclick="openTab(event, 'mod2')">Módulo 2</button>
+      <button class="tablink" onclick="openTab(event, 'mod3')">Módulo 3</button>
+      <button class="tablink" onclick="openTab(event, 'mod4')">Módulo 4</button>
+    </div>
+
+    <div id="mod1" class="tabcontent">
+      <h3>Módulo 1 – Introdução ao Excel</h3>
+      <ul>
+        <li>Interface e navegação</li>
+        <li>Linhas, colunas e células</li>
+        <li>Primeiras fórmulas</li>
+      </ul>
+      <a href="arquivos/excel/modulo1.pdf" class="btn" download>Baixar PDF</a>
+    </div>
+
+    <div id="mod2" class="tabcontent" hidden>
+      <h3>Módulo 2 – Atalhos e Formatação</h3>
+      <ul>
+        <li>Atalhos essenciais</li>
+        <li>Formatação condicional</li>
+        <li>Estilos e tabelas</li>
+      </ul>
+      <a href="arquivos/excel/modulo2.pdf" class="btn" download>Baixar PDF</a>
+    </div>
+
+    <div id="mod3" class="tabcontent" hidden>
+      <h3>Módulo 3 – Funções no Mercado</h3>
+      <ul>
+        <li>SE, PROCV/XLOOKUP</li>
+        <li>SOMASE, CONT.SE</li>
+        <li>Funções de texto e data</li>
+      </ul>
+      <a href="arquivos/excel/modulo3.pdf" class="btn" download>Baixar PDF</a>
+    </div>
+
+    <div id="mod4" class="tabcontent" hidden>
+      <h3>Módulo 4 – Gráficos e Dashboards</h3>
+      <ul>
+        <li>Gráficos básicos e avançados</li>
+        <li>Segmentações de dados</li>
+        <li>Construção de dashboards</li>
+      </ul>
+      <a href="arquivos/excel/modulo4.pdf" class="btn" download>Baixar PDF</a>
     </div>
   </section>
 
-  <!-- Conteúdo Programático -->
-  <section id="conteudo" class="bloco">
+  <!-- Conteúdo Programático em abas -->
+  <section id="conteudo" class="secao">
     <h2>Conteúdo Programático</h2>
-    <ul class="lista-conteudo">
-      <li>
-        <strong>1. Introdução ao Excel</strong><br>
-        Interface e elementos principais; Configurações iniciais; Tipos de dados; Salvamento e compatibilidade.
-      </li>
-      <li>
-        <strong>2. Atalhos e Formatação</strong><br>
-        Atalhos essenciais; Formatação de células; Formatação condicional; Congelamento de painéis.
-      </li>
-      <li>
-        <strong>3. Funções Utilizadas no Mercado de Trabalho</strong><br>
-        SOMA, MÉDIA, MÍNIMO, MÁXIMO, CONT.SE; SE, SEERRO, E, OU; CONCAT, TEXTO,
-        PROCURAR, ESQUERDA/DIREITA; Funções de data/hora; PROCV, PROCH, XLOOKUP.
-      </li>
-      <li>
-        <strong>4. Tabelas Dinâmicas e Gráficos</strong><br>
-        Criação e personalização; Segmentações e filtros; Gráficos dinâmicos e estáticos; Personalização para relatórios.
-      </li>
-    </ul>
+    <p>Explore os principais temas do curso:</p>
+
+    <div class="tabs">
+      <button class="tablink" onclick="openTab(event, 'basico')">Básico</button>
+      <button class="tablink" onclick="openTab(event, 'intermediario')">Intermediário</button>
+      <button class="tablink" onclick="openTab(event, 'funcoes')">Funções</button>
+      <button class="tablink" onclick="openTab(event, 'graficos')">Gráficos</button>
+    </div>
+
+    <div id="basico" class="tabcontent">
+      <ul>
+        <li>Introdução à interface</li>
+        <li>Salvando arquivos</li>
+        <li>Primeiras fórmulas</li>
+      </ul>
+    </div>
+
+    <div id="intermediario" class="tabcontent" hidden>
+      <ul>
+        <li>Atalhos do Excel</li>
+        <li>Formatação avançada</li>
+        <li>Tabelas dinâmicas simples</li>
+      </ul>
+    </div>
+
+    <div id="funcoes" class="tabcontent" hidden>
+      <ul>
+        <li>SE, PROCV, CONT.SE</li>
+        <li>Funções de texto</li>
+        <li>Funções de data e hora</li>
+      </ul>
+    </div>
+
+    <div id="graficos" class="tabcontent" hidden>
+      <ul>
+        <li>Gráficos de colunas e linhas</li>
+        <li>Gráficos de pizza</li>
+        <li>Dashboards integrados</li>
+      </ul>
+    </div>
   </section>
 
   <!-- Contato -->
-  <section id="contato" class="bloco contato">
+  <section id="contato" class="secao">
     <h2>Contato</h2>
-    <p>Preencha o formulário abaixo ou fale comigo direto no WhatsApp!</p>
-
-    <form action="https://formsubmit.co/guilsilva7@outlook.com" method="POST">
-      <input type="text" name="name" placeholder="Seu nome" required>
-      <input type="email" name="email" placeholder="Seu e-mail" required>
-      <textarea name="message" rows="5" placeholder="Sua mensagem" required></textarea>
-      <input type="hidden" name="_subject" value="Nova mensagem do site!">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="box">
-      <button type="submit">Enviar</button>
+    <form>
+      <input type="text" placeholder="Seu nome" required>
+      <input type="email" placeholder="Seu email" required>
+      <textarea placeholder="Sua mensagem" required></textarea>
+      <button type="submit" class="btn">Enviar</button>
     </form>
-
-    <p style="text-align:center; margin-top:20px;">
-      <a href="https://wa.me/5561982190082" target="_blank" class="btn">Falar no WhatsApp</a>
-    </p>
+    <p>Ou fale direto comigo:</p>
+    <a href="https://wa.me/55SEUNUMERO" class="btn">WhatsApp</a>
   </section>
 
   <!-- Rodapé -->
   <footer>
-    <p>&copy; 2025 Guilherme Pereira</p>
+    <p>&copy; 2025 Curso de Excel – Guilherme Pereira</p>
   </footer>
 
+  <!-- Script das abas -->
   <script>
-    function toggleMenu(){ document.getElementById("menu").classList.toggle("active"); }
+    function openTab(evt, tabId) {
+      // esconde todos
+      document.querySelectorAll('.tabcontent').forEach(el => {
+        el.hidden = true;
+      });
+      // desmarca todas as abas
+      document.querySelectorAll('.tablink').forEach(btn => {
+        btn.setAttribute('aria-selected', 'false');
+      });
+      // mostra a escolhida
+      const tab = document.getElementById(tabId);
+      if (tab) tab.hidden = false;
+      // marca a aba ativa
+      if (evt && evt.currentTarget) {
+        evt.currentTarget.setAttribute('aria-selected', 'true');
+      } else {
+        const firstBtn = document.querySelector('.tablink');
+        if (firstBtn) firstBtn.setAttribute('aria-selected','true');
+      }
+    }
+    // abre a primeira aba ao carregar
+    window.addEventListener('DOMContentLoaded', () => {
+      const firstTab = document.querySelector('.tabcontent');
+      if (firstTab) firstTab.hidden = false;
+      const firstBtn = document.querySelector('.tablink');
+      if (firstBtn) firstBtn.setAttribute('aria-selected','true');
+    });
   </script>
+
 </body>
 </html>

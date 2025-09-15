@@ -1,0 +1,9 @@
+Coloque aqui os PDFs reais dos módulos do curso.
+
+Nomes recomendados:
+- modulo1.pdf
+- modulo2.pdf
+- modulo3.pdf
+- modulo4.pdf
+
+Este site já aponta para esses nomes na pasta: arquivos/excel/
